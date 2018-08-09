@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>快叫爸爸</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.container{
+			width: 90%;
+			margin: 200px auto;
+		}
+		.pic{
+			margin: 0 auto;
+			width: 50%;
+		}
+		.pic img{
+			width: 100%;
+		}
+		.btn{
+			width: 50%;
+			margin: 50px auto;
+
+		}
+		button{
+			font-size: 40px;
+		}
+		.btn1{
+			margin-right: 100px;
+			margin-left: 80px;
+			width: 100px;
+			height: 80px;
+			background-color: #008B8B;
+
+		}
+		.btn2{
+			width: 100px;
+			height: 80px;
+			background-color: #8B008B;
+		}
+		h3{
+			text-align: center;
+			margin-top: 20px;
+			font-size: 50px;
+		}
+		.footer{
+			margin-top: 300px;
+			text-align: center;
+			font-size: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="pic">
+			<img src="./img/0.jpg" alt="">
+		</div>
+		<div class="ques">
+			<h3>我是不是你爸爸？</h3>
+		</div>
+		<div class="btn">
+			<button class="btn1">是</button>
+			<button class="btn2">不是</button>
+		</div>
+		<div class="footer">
+			copyright ©2018 zhaokang 版权所有 
+		</div>
+	</div>
+	<script>
+		var btn1 = document.getElementsByTagName('button')[0];
+		var btn2 = document.getElementsByTagName('button')[1];
+		var img = document.getElementsByTagName('img')[0];
+		var sta = 0;
+		// alert(btn1.innerHTML);
+		btn1.onmouseover = function() {
+			if (btn1.innerHTML != '是') {
+				if (sta<4) {
+					btn1.innerHTML = '是';
+					btn2.innerHTML = '不是';
+					sta++;
+				}
+			}
+		}
+		btn2.onmouseover = function() {
+			if (btn2.innerHTML != '是') {
+				if (sta<4) {
+					btn2.innerHTML = '是';
+					btn1.innerHTML = '不是';
+					sta++;
+				}
+			}
+		}
+		var content1 = ['闺女真乖','闺女，爸爸爱你呦','爸爸给你买糖吃','来，叫声爸爸听听'];
+		var content2 = ['呜呜呜，你真的不认我这个爸爸了吗','啊啊啊，我不活了','你确定不叫我爸爸？','叫一声嘛！'];
+		var flag = -1; 
+		// console.log(btn1);
+		btn1.addEventListener("click",function(){
+			if (flag>2) {
+				flag = -1;
+			}
+			if (btn1.innerHTML == '是') {
+				setTimeout(function(){alert(content1[flag])},300);
+				img.src = './img/1.jpg';
+
+			}else{
+				setTimeout(function(){alert(content2[flag])},500);
+				img.src = './img/2.jpg';
+			}
+		
+			flag++;
+		});
+		btn2.addEventListener("click",function(){
+			if (flag>2) {
+				flag = -1;
+			}
+			if (btn2.innerHTML == '是') {
+				setTimeout(function(){alert(content1[flag])},500);
+				img.src = './img/1.jpg';
+				
+			}else{
+				setTimeout(function(){alert(content2[flag])},500);
+				img.src = './img/2.jpg';
+			}
+			
+			flag++;
+		});
+	</script>
+</body>
+</html>
